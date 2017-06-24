@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor()
   {
-    this.loan = new Loan(4.19, 360);
+    this.loan = new Loan(250000, 4.19, 360, 0, new Date(2017,5,5));
 
   }
 }

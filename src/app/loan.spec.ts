@@ -17,12 +17,12 @@ describe('Loan', () => {
     expect(loan.amount).toBe(250000);
     expect(loan.rate).toBe(4.17);
     expect(loan.term).toBe(360);
-    expect(loan.startDate).toBe(new Date(2017, 5, 5));
+    expect(loan.startDate.valueOf()).toBe(new Date(2017, 5, 5).valueOf());
   }));
 
   it('given a regular extra payment, term should be reduced', async(() => {
     let loan = new Loan(250000, 4.19, 360, 5000, new Date(2017, 5, 5));
-    expect(loan.EffectiveTerm()).toBe((4 + 7/12));
+    expect(loan.EffectiveTerm()).toBe(4 * 12 + 7);
   }));
 
   it('interest should be calculated daily', async(() => {
