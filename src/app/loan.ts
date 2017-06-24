@@ -51,6 +51,8 @@ export class Loan {
             let principal_paid = this.extraRepayments - interest;
             balanceAtEnd = balanceAtStart - principal_paid;
 
+            if (balanceAtEnd > balanceAtStart)
+                return -1;
             console.log(balanceAtEnd);
             et++;
         }

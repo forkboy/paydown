@@ -10,13 +10,16 @@ import { Loan } from './loan';
 export class AppComponent {
   title = 'app';
   loan:Loan;
-
-  loan1:number = 250000;
-  loan2:number = 250000;
+  effectiveTerm: number;
+  effectiveTermString: string;
+  
 
   constructor()
   {
-    this.loan = new Loan(250000, 4.19, 360, 0, new Date(2017,5,5));
+    let startDate = new Date(2017,5,5);
 
+    this.loan = new Loan(250000, 4.19, 360, 5000, startDate);
+    this.effectiveTerm = this.loan.EffectiveTerm();
+    this.effectiveTermString = ((this.effectiveTerm - this.effectiveTerm % 12) / 12) + " years, " + (this.effectiveTerm % 12) + " months";
   }
 }
